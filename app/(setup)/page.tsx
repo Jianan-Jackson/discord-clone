@@ -9,6 +9,11 @@ const SetupPage = async () => {
 
     const profile = await initialProfile();
 
+    if (!profile || !('id' in profile)) {
+        // Handle the case where profile is null or doesn't have an id
+        throw new Error("Profile not found or invalid profile type");
+    }
+
     const server = await db.server.findFirst({
         where:{
             members: {
