@@ -16,6 +16,7 @@ import { QueryProvider } from "@/components/providers/query-provider";
 
 const font = Open_Sans({ subsets: ["latin"] });
 
+
 export const metadata: Metadata = {
   title: "Discord",
   description: "Created by JC",
@@ -26,8 +27,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const clerkKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+
+  // Log the value to the console
+  // console.log('Clerk Publishable Key:', clerkKey);
+
   return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+    <ClerkProvider publishableKey={clerkKey}>
       <html lang="en" suppressHydrationWarning>
         <body className={cn(
           font.className,
